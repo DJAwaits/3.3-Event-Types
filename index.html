@@ -49,6 +49,14 @@
         document.addEventListener('keydown', function(e){
             console.log(`You just hit the ${e.key} key`)
         });
+
+        inputElement.addEventListener('mouseover', function(e){
+            console.log('Your mouse is over the input!')
+        });
+
+        inputElement.addEventListener('mouseout', function(e){
+            console.log('Your mouse is no longer over the input')
+        });
     </script>
 </body>
 </html>
