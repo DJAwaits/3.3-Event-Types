@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Area of Rectangle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h3>Area of rectangle</h3>
+            <div>
+                <label for="l">L</label>
+                <input type="text" id="l" name="l" style="width: 100px;">
+            </div>
+            <div>
+                <label for="w">W</label>
+                <input type="text" id="w" name="w" style="width: 100px;">
+            </div>
+            <button id="calc">Calculator</button>
+            <button id="clear">Clear Button</button>
+            <p></p>
+        </div>
+
+    </div>
+<script>
+    const calculateButton = document.getElementById('calc');
+    const clearButton = document.getElementById('clear');
+    const ans = document.querySelector('p');
+
+    calculateButton.addEventListener('click', function(e){
+        var l = document.getElementById('l').value;
+        var w = document.getElementById('w').value;
+        var result = l*w
+        ans.textContent=result;
+
+    })
+
+    clearButton.addEventListener('click', function(e){
+        w.value = "";
+        l.value = "";
+        ans.textContent = "";
+    })
+</script>
+</body>
+</html>
