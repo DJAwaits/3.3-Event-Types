@@ -39,11 +39,11 @@
 
     submitButton.addEventListener('click', function(e){
         let toDoItem = item.value;
-        addItemToIncompleteTable(toDoItem);
+        addItemToLists(toDoItem);
         item.value = "";
     })
 
-    function addItemToIncompleteTable(toDoItem) {
+    /*function addItemToIncompleteTable(toDoItem) {
         let newRow = document.createElement('tr');
         let descriptionTag = document.createElement('td');
         descriptionTag.textContent = toDoItem;
@@ -72,6 +72,36 @@
             newRow.remove();
             addItemToIncompleteTable(toDoItem);
         })
+        actionTag.appendChild(action);
+        newRow.appendChild(actionTag);
+        incomplete.appendChild(newRow);
+    }*/
+
+    function addItemToLists(toDoItem) {
+        let newRow = document.createElement('tr');
+        let descriptionTag = document.createElement('td');
+        descriptionTag.textContent = toDoItem;
+        newRow.appendChild(descriptionTag);
+        let actionTag = document.createElement('td');
+        let action = document.createElement('button');
+        action.textContent = "Mark Incomplete";
+        if(action.textContent==='Mark Incomplete') {
+            action.addEventListener('click', function () {
+                newRow.remove();
+                addItemToLists(toDoItem);
+                action.textContent='mark complete'
+            })
+        } else{
+
+
+            action.addEventListener('click', function () {
+                newRow.remove();
+                addItemToLists();
+                action.textContent='mark incomplete'
+            })
+        }
+
+
         actionTag.appendChild(action);
         newRow.appendChild(actionTag);
         incomplete.appendChild(newRow);
