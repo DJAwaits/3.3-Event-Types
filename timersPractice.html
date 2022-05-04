@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timers Practice</title>
+  <link rel="stylesheet" href="style.css">
+    <style>
+        .red{
+            background-color:red;
+        }
+        .green{
+            background-color:green;
+        }
+        .blue{
+            background-color:blue;
+        }
+        .black{
+            background-color:black;
+        }
+        .orange{
+            background-color:orange;
+        }
+        .brown{
+            background-color:brown;
+        }
+        .pink{
+            color:pink;
+        }
+        .teal{
+            color:teal;
+        }
+        .purple{
+            color:purple;
+        }
+        .white {
+            color: white;
+        }
+        .yellow{
+            color:yellow;
+        }
+        .gray{
+            color:gray;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <button id="removableButton">Remove in 3 sec</button>
+        <button id="randomColors">Random Color Every 5 Seconds</button>
+        <button id="stopRandomColors">Choose This Color</button>
+        <q>White</q>
+    </div>
+</div>
+
+<script>
+    const color = ["red", "blue", "green", "black", "orange", "yellow"]
+    const content = document.querySelector('.content');
+    const currentColor = document.querySelector('q');
+    const removableButton = document.getElementById('removableButton');
+    const randomColorsButton = document.getElementById('randomColors');
+    const stopRandomColorButton = document.getElementById('stopRandomColors');
+    let colorInterval;
+
+    removableButton.addEventListener('click', function(){
+        setTimeout(function(){
+            removableButton.remove();
+        }, 3000);
+    })
+
+    randomColorsButton.addEventListener('click', function(){
+       if (!colorInterval)
+           colorInterval = setInterval(function(){
+               content.classList.remove('red');
+               content.classList.remove('blue');
+               content.classList.remove('yellow');
+               content.classList.remove('black');
+               content.classList.remove('green');
+               content.classList.remove('orange');
+               let randomColor = color[Math.floor(Math.random()*color.length)];
+               currentColor.innerHTML = `${randomColor}`;
+               content.classList.add(randomColor);
+           }, 5000);
+    })
+
+    stopRandomColorButton.addEventListener('click', function(){
+        chooseThisColor();
+    })
+
+    function chooseThisColor(){
+        clearInterval(colorInterval);
+    }
+</script>
+</body>
+</html>
